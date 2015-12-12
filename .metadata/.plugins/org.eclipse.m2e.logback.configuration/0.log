@@ -1,0 +1,47 @@
+2015-12-11 20:01:06,378 [Worker-1] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Collecting project info '/pom.xml' C:\Users\JAT\Desktop\Git\CalculatoSwing\Calculator\pom.xml
+2015-12-11 20:01:12,596 [Worker-1] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: Calculato:Calculator:0.0.1-SNAPSHOT @ C:\Users\JAT\Desktop\Git\CalculatoSwing\Calculator\pom.xml.
+2015-12-11 20:01:14,081 [Worker-4] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: Calculato:Calculator:0.0.1-SNAPSHOT @ C:\Users\JAT\Desktop\Git\CalculatoSwing\Calculator\pom.xml.
+2015-12-11 20:01:14,113 [Worker-1] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /Calculator/src/main/java
+2015-12-11 20:01:14,122 [Worker-1] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /Calculator/src/test/java
+2015-12-11 20:01:17,587 [Worker-1] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 1 project(s) in 11 sec
+2015-12-11 20:01:18,746 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: Calculato:Calculator:0.0.1-SNAPSHOT @ C:\Users\JAT\Desktop\Git\CalculatoSwing\Calculator\pom.xml.
+2015-12-11 20:01:18,892 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-12-11 20:01:18,893 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JAT\Desktop\Git\CalculatoSwing\Calculator\src\main\resources
+2015-12-11 20:01:18,896 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-12-11 20:01:18,897 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JAT\Desktop\Git\CalculatoSwing\Calculator\src\test\resources
+2015-12-11 20:02:00,632 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-12-11 20:02:00,632 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JAT\Desktop\Git\CalculatoSwing\Calculator\src\main\resources
+2015-12-11 20:02:00,632 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-12-11 20:02:00,632 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JAT\Desktop\Git\CalculatoSwing\Calculator\src\test\resources
+2015-12-11 20:02:16,509 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-12-11 20:02:16,509 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JAT\Desktop\Git\CalculatoSwing\Calculator\src\main\resources
+2015-12-11 20:02:16,509 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-12-11 20:02:16,509 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JAT\Desktop\Git\CalculatoSwing\Calculator\src\test\resources
+2015-12-11 20:02:34,114 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-12-11 20:02:34,115 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JAT\Desktop\Git\CalculatoSwing\Calculator\src\main\resources
+2015-12-11 20:02:34,117 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-12-11 20:02:34,118 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JAT\Desktop\Git\CalculatoSwing\Calculator\src\test\resources
+2015-12-11 23:59:06,691 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-12-11 23:59:06,692 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JAT\Desktop\Git\CalculatoSwing\Calculator\src\main\resources
+2015-12-11 23:59:06,695 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-12-11 23:59:06,696 [Worker-87] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JAT\Desktop\Git\CalculatoSwing\Calculator\src\test\resources
+2015-12-12 00:04:56,118 [Worker-93] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-12-12 00:04:56,128 [Worker-93] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JAT\Desktop\Git\CalculatoSwing\Calculator\src\main\resources
+2015-12-12 00:04:56,128 [Worker-93] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-12-12 00:04:56,128 [Worker-93] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JAT\Desktop\Git\CalculatoSwing\Calculator\src\test\resources
+2015-12-12 00:32:51,652 [Worker-103] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-12-12 00:32:51,654 [Worker-103] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JAT\Desktop\Git\CalculatoSwing\Calculator\src\main\resources
+2015-12-12 00:32:51,657 [Worker-103] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-12-12 00:32:51,657 [Worker-103] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JAT\Desktop\Git\CalculatoSwing\Calculator\src\test\resources
+2015-12-12 00:34:56,289 [Worker-88] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-12-12 00:34:56,299 [Worker-88] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JAT\Desktop\Git\CalculatoSwing\Calculator\src\main\resources
+2015-12-12 00:34:56,309 [Worker-88] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-12-12 00:34:56,309 [Worker-88] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JAT\Desktop\Git\CalculatoSwing\Calculator\src\test\resources
+2015-12-12 00:37:43,716 [Worker-88] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-12-12 00:37:43,726 [Worker-88] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JAT\Desktop\Git\CalculatoSwing\Calculator\src\main\resources
+2015-12-12 00:37:43,726 [Worker-88] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-12-12 00:37:43,726 [Worker-88] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\JAT\Desktop\Git\CalculatoSwing\Calculator\src\test\resources
+2015-12-12 00:38:57,107 [Worker-106] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\JAT\Desktop\Git\CalculatoSwing\Calculator
+2015-12-12 00:38:57,117 [Worker-106] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B 
+2015-12-12 00:51:25,258 [Worker-114] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\JAT\Desktop\Git\CalculatoSwing\Calculator
+2015-12-12 00:51:25,258 [Worker-114] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B 

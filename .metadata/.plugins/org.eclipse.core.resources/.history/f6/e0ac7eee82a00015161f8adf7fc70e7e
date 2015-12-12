@@ -1,0 +1,468 @@
+/*
+ * github/naomijub @jnboeira
+ * */
+
+import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.KeyStroke;
+import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+public class Calculator extends JFrame implements ActionListener{
+
+	//Constants
+	public static final int MAX_INPUT = 20;
+	public static final int INPUT_MODE = 0;
+	public static final int RESULT_MODE = 1;
+	public static final int ERROR_MODE = 2;
+	
+	//Var
+	public int displayMode;
+	public boolean clearOnNextDigit, percent;
+	public double lastNumber;
+	public String lastStr;
+	
+	//Frames, labes, menu, panel, buttons
+	private JMenu menuFile, menuHelp;
+	private JMenuItem itemExit, itemAbout;
+	private JLabel outputLabel;
+	private JButton buttons[];
+	private JPanel master, backspace, control;
+	
+	//Fonts
+	Font button = new Font("Arial", 0, 12);
+	Font label = new Font("Arial", 1, 12);
+	
+	public Calculator(){
+		
+		//File Menu
+		menuFile = new JMenu("File");
+		menuFile.setFont(label);
+		menuFile.setMnemonic(KeyEvent.VK_F);
+		itemExit = new JMenuItem("Exit");
+		itemExit.setFont(label);
+		itemExit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE,
+				ActionEvent.CTRL_MASK));
+		menuFile.add(itemExit);
+		
+		//Help Menu
+		menuHelp = new JMenu("Help");
+		menuHelp.setFont(label);
+		menuHelp.setMnemonic(KeyEvent.VK_H);
+		itemAbout = new JMenuItem("About");
+		itemAbout.setFont(label);
+		menuHelp.add(itemAbout);
+		
+		//Menu bar
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.add(menuFile);
+		menuBar.add(menuHelp);
+		setJMenuBar(menuBar);
+		
+		//Frame Layout 
+		setBackground(Color.BLUE);
+		master = new JPanel();
+		outputLabel = new JLabel("0");
+		outputLabel.setHorizontalTextPosition(JLabel.RIGHT);
+		outputLabel.setOpaque(true);
+		outputLabel.setBackground(Color.WHITE);
+		
+		//Buttons
+		buttons = new JButton[23];
+		JPanel buttonsPanel = new JPanel();
+		
+		for(int i = 0;i < 10;i++){
+			buttons[i] = new JButton(String.valueOf(i));
+		}
+		
+		buttons[10] = new JButton("+/-");
+		buttons[11] = new JButton(".");
+		buttons[12] = new JButton("**");
+		buttons[13] = new JButton("/");
+		buttons[14] = new JButton("*");
+		buttons[15] = new JButton("-");
+		buttons[16] = new JButton("+");
+		buttons[17] = new JButton("sqrt");
+		buttons[18] = new JButton("1/x");
+		buttons[19] = new JButton("%");
+		
+		buttons[20] = new JButton("=");
+		buttons[21] = new JButton("C");
+		control = new JPanel();
+		control.setLayout(new GridLayout(1, 2, 2, 2));
+		control.add(buttons[20]);
+		control.add(buttons[21]);
+		buttons[22] = new JButton("Backspace"); 
+		backspace = new JPanel();
+		backspace.setLayout(new GridLayout(1, 1, 2, 2));
+		backspace.add(buttons[22]);
+		
+		//color set
+		for(int i = 0; i < buttons.length;i++){
+			buttons[i].setFont(button);
+			if(i < 10){
+				buttons[i].setForeground(Color.BLUE);
+			}else{
+				buttons[i].setForeground(Color.RED);
+			}
+		}
+		buttonsPanel.setLayout(new GridLayout(5, 4, 2, 2));
+		
+		//first row
+		for(int i = 7;i < 10;i++){
+			buttonsPanel.add(buttons[i]);
+		}
+		buttonsPanel.add(buttons[13]);
+		//second row
+		for(int i = 4;i < 7;i++){
+			buttonsPanel.add(buttons[i]);
+		}
+		buttonsPanel.add(buttons[14]);
+		//third row
+		for(int i = 1;i < 4;i++){
+			buttonsPanel.add(buttons[i]);
+		}
+		buttonsPanel.add(buttons[15]);
+		//forth row
+		buttonsPanel.add(buttons[10]);
+		buttonsPanel.add(buttons[0]);
+		buttonsPanel.add(buttons[11]);
+		buttonsPanel.add(buttons[16]);
+		//fifth row
+		buttonsPanel.add(buttons[12]);
+		buttonsPanel.add(buttons[17]);
+		buttonsPanel.add(buttons[18]);
+		buttonsPanel.add(buttons[19]);
+		
+		//Frame Components
+		//master
+		master.setLayout(new BorderLayout());
+		master.add(control, BorderLayout.EAST);
+		master.add(backspace, BorderLayout.WEST);
+		master.add(buttonsPanel, BorderLayout.SOUTH); 
+		
+		//content pane
+		getContentPane().add(master, BorderLayout.SOUTH);
+		getContentPane().add(outputLabel, BorderLayout.NORTH);
+		requestFocus();
+		
+		//activating ActionListeners
+		for(int i = 0;i < buttons.length;i++){
+			buttons[i].addActionListener(this);
+		}
+		itemAbout.addActionListener(this);
+		itemExit.addActionListener(this);
+		//clear();
+		
+		//Exit Listener
+		addWindowListener(new WindowAdapter() {
+
+			public void windowClosed(WindowEvent e) {
+				System.exit(0);
+			}
+		});
+	}
+	
+	public void actionPerformed(ActionEvent e){
+		
+		//double result = 0;
+		
+		//Menu
+		if(e.getSource() == itemExit){
+			System.exit(0);
+		}
+		if(e.getSource() == itemAbout){
+			JDialog about = new AboutDialogs(this, "About Calculator", true);
+			about.setVisible(true);
+		}
+		
+		//Numbers
+		if(e.getSource() == buttons[0]){
+			addDigit(0);
+		}
+		if(e.getSource() == buttons[1]){
+			addDigit(1);
+		}
+		if(e.getSource() == buttons[2]){
+			addDigit(2);
+		}
+		if(e.getSource() == buttons[3]){
+			addDigit(3);
+		}
+		if(e.getSource() == buttons[4]){
+			addDigit(4);
+		}
+		if(e.getSource() == buttons[5]){
+			addDigit(5);
+		}
+		if(e.getSource() == buttons[6]){
+			addDigit(6);
+		}
+		if(e.getSource() == buttons[7]){
+			addDigit(7);
+		}
+		if(e.getSource() == buttons[8]){
+			addDigit(8);
+		}
+		if(e.getSource() == buttons[9]){
+			addDigit(9);
+		}
+		
+		//sign and floatPoint
+		if(e.getSource() == buttons[10]){
+			signChange();
+		}
+		if(e.getSource() == buttons[11]){
+			addFloatPoint();
+		}
+		
+		//operations
+		if(e.getSource() == buttons[12]){
+			operator(buttons[12].getName());
+		}
+		if(e.getSource() == buttons[13]){
+			operator(buttons[13].getName());
+		}
+		if(e.getSource() == buttons[14]){
+			operator(buttons[14].getName());
+		}
+		if(e.getSource() == buttons[15]){
+			operator(buttons[15].getName());
+		}
+		if(e.getSource() == buttons[16]){
+			operator(buttons[16].getName());
+		}
+		if(e.getSource() == buttons[17]){
+			operator(buttons[17].getName());
+		}
+		if(e.getSource() == buttons[18]){
+			operator(buttons[18].getName());
+		}
+		if(e.getSource() == buttons[19]){
+			operator(buttons[19].getName());
+		}
+		
+		//equals
+		if(e.getSource() == buttons[20]){
+			equals();
+		}
+		
+		//clear
+		if(e.getSource() == buttons[21]){
+			clear();
+		}
+		
+		//backspace
+		if(e.getSource() == buttons[22]){
+			minusDigit();
+		}
+		
+	}
+	
+	void setDisplay(String str){
+		outputLabel.setText(str);
+	}
+	
+	String getDisplay(){
+		return outputLabel.getText();
+	}
+	
+	void addDigit(int digit){
+		if (clearOnNextDigit){
+			setDisplay("");
+		}
+		String str = getDisplay();
+		
+		if (str.indexOf("0") == 0) {
+			str = str.substring(1);
+		}
+		if ((!str.equals("0") || digit >= 0) && (str.length() <= MAX_INPUT)) {
+			setDisplay(str + digit);
+		}
+		displayMode = INPUT_MODE;
+		clearOnNextDigit = false;
+	}
+	
+	void minusDigit(){
+		if (clearOnNextDigit){
+			setDisplay("");
+		}
+		String str = getDisplay();
+		
+		if (str.length() > 1) {
+		      str = str.substring(0, str.length()-1);
+		      setDisplay(str);
+		}else{
+			setDisplay("0");
+		}
+			
+		displayMode = INPUT_MODE;
+		clearOnNextDigit = false;
+	}
+	
+	void addFloatPoint() {
+		displayMode = INPUT_MODE;
+		
+		if (clearOnNextDigit)
+			setDisplay("");
+		String str = getDisplay();
+		
+		if (str.indexOf(".") < 0)
+			setDisplay(new String(str + "."));
+	}
+	
+	void signChange(){
+		
+		if (displayMode == INPUT_MODE) {
+			String str = getDisplay();
+			
+			if (str.length() > 0 && !str.equals("0")) {
+				
+				if (str.indexOf("-") == 0)
+					setDisplay(str.substring(1));
+				else
+					setDisplay("-" + str);
+			}
+			
+		} else if (displayMode == RESULT_MODE) {
+			double numberInDisplay = getNumberDisplay();
+			if (numberInDisplay != 0)
+				result(-numberInDisplay);
+		}
+	}
+	
+	void clear(){
+		setDisplay("0");
+		lastStr = "0";
+		lastNumber = 0;
+		displayMode = INPUT_MODE;
+		clearOnNextDigit = true;
+	}
+	
+	double getNumberDisplay(){
+		String str = outputLabel.getText();
+		return Double.parseDouble(str);
+	}
+	
+	void operator(String op) {
+		
+		if (displayMode != ERROR_MODE) {
+	
+			lastStr = op;
+			if (clearOnNextDigit){
+				setDisplay("");
+			}
+			String str = getDisplay();
+			setDisplay(str+op);
+			
+				try {
+					lastOperator();
+					
+				} catch (DividedByZeroException e) {
+					JOptionPane.showMessageDialog(null, "Erro Dividing by Zero");
+					setDisplay("ERROR DIV/0");
+				}
+			
+			clearOnNextDigit = true;
+			
+		}
+	}
+	
+	void lastOperator() throws DividedByZeroException {
+		
+		double number = getNumberDisplay();
+		double result = 0;
+		
+		if (lastStr.equals("/")) {
+			if (number == 0)
+				throw (new DividedByZeroException());
+			result = lastNumber / number;
+		}
+		if (lastStr.equals("*")){
+			result = lastNumber * number;
+		}
+		if (lastStr.equals("-")){
+			result = lastNumber - number;
+		}
+		if (lastStr.equals("+")){
+			result = lastNumber + number;
+		}
+		if (lastStr.equals("**")){
+			result = Math.pow(lastNumber,number);
+		}
+		if (lastStr.equals("%")){
+			lastNumber = (int) lastNumber;
+			number = (int) number;
+			result = lastNumber % number;
+		}
+		if (lastStr.equals("1/x")){
+			result = 1 / number;
+		}
+		if (lastStr.equals("sqrt")){
+			result = Math.sqrt(number);
+		}
+		
+		 result(result);
+		 lastNumber = result;
+	}
+	
+	void equals() {
+		double result = 0;
+		
+		if (displayMode != ERROR_MODE) {
+			
+			try {
+				lastOperator();
+				result(result);
+			} catch (DividedByZeroException e) {
+				error("Cannot divide by zero!");
+			}
+			
+			lastStr = "0";
+		}
+	}
+	
+	void result(double number){
+		setDisplay(Double.toString(number));
+		lastNumber = number;
+		displayMode = RESULT_MODE;
+		clearOnNextDigit = true;
+	}
+	
+	void error(String errorMessage) {
+		setDisplay(errorMessage);
+		lastNumber = 0;
+		displayMode = ERROR_MODE;
+		clearOnNextDigit = true;
+	}
+	
+	public static void main(String args[]) {
+		Calculator calculator = new Calculator();
+		//Image im  = Toolkit.getDefaultToolkit().getImage("image/icon.gif");
+		//Container contentPane = calculator.getContentPane();
+		//		contentPane.setLayout(new BorderLayout());
+		//calculator.setIconImage(im);
+		calculator.setTitle("@naomijub Calculator");
+		calculator.setSize(250, 225);
+		calculator.pack();
+		calculator.setLocation(200, 200);
+		calculator.setVisible(true);
+	}
+
+}

@@ -1,0 +1,2 @@
+INDEX VERSION 1.127+C:\Users\JAT\Desktop\Git\CalculatoSwing\.metadata\.plugins\org.eclipse.jdt.core
+2019302840.index
