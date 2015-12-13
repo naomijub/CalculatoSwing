@@ -104,7 +104,7 @@ public class Calculator extends JFrame implements ActionListener{
 		labelsPanel.add(answerLabel);
 		
 		//Buttons
-		buttons = new JButton[31];
+		buttons = new JButton[23];
 		JPanel buttonsPanel = new JPanel();
 		
 		for(int i = 0;i < 10;i++){
@@ -121,17 +121,6 @@ public class Calculator extends JFrame implements ActionListener{
 		buttons[17] = new JButton("sqrt");
 		buttons[18] = new JButton("1/x");
 		buttons[19] = new JButton("%");
-		
-		//update
-		buttons[23] = new JButton("x!");
-		buttons[24] = new JButton("x?");
-		buttons[25] = new JButton("Log");
-		buttons[26] = new JButton("Ln");
-		buttons[27] = new JButton("Sin");
-		buttons[28] = new JButton("Cos");
-		buttons[29] = new JButton("Tan");
-		buttons[30] = new JButton("nCr");
-		
 		
 		buttons[20] = new JButton("=");
 		buttons[21] = new JButton("C");
@@ -153,7 +142,7 @@ public class Calculator extends JFrame implements ActionListener{
 				buttons[i].setForeground(Color.RED);
 			}
 		}
-		buttonsPanel.setLayout(new GridLayout(7, 4, 2, 2));
+		buttonsPanel.setLayout(new GridLayout(5, 4, 2, 2));
 		
 		//first row
 		for(int i = 7;i < 10;i++){
@@ -180,16 +169,6 @@ public class Calculator extends JFrame implements ActionListener{
 		buttonsPanel.add(buttons[17]);
 		buttonsPanel.add(buttons[18]);
 		buttonsPanel.add(buttons[19]);
-		//sixth row
-		buttonsPanel.add(buttons[23]);
-		buttonsPanel.add(buttons[24]);
-		buttonsPanel.add(buttons[25]);
-		buttonsPanel.add(buttons[26]);
-		//seventh row
-		buttonsPanel.add(buttons[27]);
-		buttonsPanel.add(buttons[28]);
-		buttonsPanel.add(buttons[29]);
-		buttonsPanel.add(buttons[30]);
 		
 		//Frame Components
 		//master
@@ -302,33 +281,6 @@ public class Calculator extends JFrame implements ActionListener{
 		if(e.getSource() == buttons[19]){
 			operator("%");
 		}
-		
-		//update
-		if(e.getSource() == buttons[23]){
-			operator("x!");
-		}
-		if(e.getSource() == buttons[24]){
-			operator("x?");
-		}
-		if(e.getSource() == buttons[25]){
-			operator("Log");
-		}
-		if(e.getSource() == buttons[26]){
-			operator("Ln");
-		}
-		if(e.getSource() == buttons[27]){
-			operator("Sin");
-		}
-		if(e.getSource() == buttons[28]){
-			operator("Cos");
-		}
-		if(e.getSource() == buttons[29]){
-			operator("Tan");
-		}
-		if(e.getSource() == buttons[30]){
-			operator("nCr");
-		}
-		
 		
 		//equals
 		if(e.getSource() == buttons[20]){
@@ -546,38 +498,6 @@ public class Calculator extends JFrame implements ActionListener{
 			result = Math.sqrt(lastNumber);
 		}
 		
-		//update
-		if (lastStr.equals("x!")){
-			int numberFat = (int) lastNumber;
-			result = fatorial(numberFat);
-		}
-		if (lastStr.equals("x?")){
-			int numberFat = (int) lastNumber;
-			for(int i = numberFat;i > 0;i--){
-				result = result + i;
-			}
-		}
-		if (lastStr.equals("Log")){
-			result = Math.log10(lastNumber);
-		}
-		if (lastStr.equals("Ln")){
-			result = Math.log(lastNumber);
-		}
-		if (lastStr.equals("Sin")){
-			result = Math.sin(lastNumber);
-		}
-		if (lastStr.equals("Cos")){
-			result = Math.cos(lastNumber);
-		}
-		if (lastStr.equals("Tan")){
-			result = Math.tan(lastNumber);
-		}
-		if (lastStr.equals("nCr")){
-			int n = (int) lastNumber;
-			int p = (int) number;
-			result = fatorial(n) / (fatorial(p) * fatorial(n - p));
-		}
-		
 		 //result(result);
 		 finalNumber = result;
 	}
@@ -612,14 +532,6 @@ public class Calculator extends JFrame implements ActionListener{
 		lastNumber = 0;
 		displayMode = ERROR_MODE;
 		clearOnNextDigit = true;
-	}
-	
-	int fatorial(int x){
-		int result = 1;
-		for(int i = x;i > 0;i--){
-			result = result * i;
-		}
-		return result;
 	}
 	
 	public static void main(String args[]) {

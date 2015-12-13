@@ -303,33 +303,6 @@ public class Calculator extends JFrame implements ActionListener{
 			operator("%");
 		}
 		
-		//update
-		if(e.getSource() == buttons[23]){
-			operator("x!");
-		}
-		if(e.getSource() == buttons[24]){
-			operator("x?");
-		}
-		if(e.getSource() == buttons[25]){
-			operator("Log");
-		}
-		if(e.getSource() == buttons[26]){
-			operator("Ln");
-		}
-		if(e.getSource() == buttons[27]){
-			operator("Sin");
-		}
-		if(e.getSource() == buttons[28]){
-			operator("Cos");
-		}
-		if(e.getSource() == buttons[29]){
-			operator("Tan");
-		}
-		if(e.getSource() == buttons[30]){
-			operator("nCr");
-		}
-		
-		
 		//equals
 		if(e.getSource() == buttons[20]){
 			equals();
@@ -546,38 +519,6 @@ public class Calculator extends JFrame implements ActionListener{
 			result = Math.sqrt(lastNumber);
 		}
 		
-		//update
-		if (lastStr.equals("x!")){
-			int numberFat = (int) lastNumber;
-			result = fatorial(numberFat);
-		}
-		if (lastStr.equals("x?")){
-			int numberFat = (int) lastNumber;
-			for(int i = numberFat;i > 0;i--){
-				result = result + i;
-			}
-		}
-		if (lastStr.equals("Log")){
-			result = Math.log10(lastNumber);
-		}
-		if (lastStr.equals("Ln")){
-			result = Math.log(lastNumber);
-		}
-		if (lastStr.equals("Sin")){
-			result = Math.sin(lastNumber);
-		}
-		if (lastStr.equals("Cos")){
-			result = Math.cos(lastNumber);
-		}
-		if (lastStr.equals("Tan")){
-			result = Math.tan(lastNumber);
-		}
-		if (lastStr.equals("nCr")){
-			int n = (int) lastNumber;
-			int p = (int) number;
-			result = fatorial(n) / (fatorial(p) * fatorial(n - p));
-		}
-		
 		 //result(result);
 		 finalNumber = result;
 	}
@@ -612,14 +553,6 @@ public class Calculator extends JFrame implements ActionListener{
 		lastNumber = 0;
 		displayMode = ERROR_MODE;
 		clearOnNextDigit = true;
-	}
-	
-	int fatorial(int x){
-		int result = 1;
-		for(int i = x;i > 0;i--){
-			result = result * i;
-		}
-		return result;
 	}
 	
 	public static void main(String args[]) {
