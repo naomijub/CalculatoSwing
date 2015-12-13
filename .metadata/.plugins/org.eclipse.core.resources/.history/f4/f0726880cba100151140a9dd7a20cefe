@@ -349,26 +349,16 @@ public class Calculator extends JFrame implements ActionListener{
 	}
 	
 	void minusDigit(){
-		if(lastStr.equals("")){
-			String str = getDisplay();
 		
-			if (str.length() > 1) {
-				str = str.substring(0, str.length()-1);
-				setDisplay(str);
-			}else{
-				setDisplay("0");
-			}
+		String str = getDisplay();
+		
+		if (str.length() > 1) {
+		      str = str.substring(0, str.length()-1);
+		      setDisplay(str);
 		}else{
-			String str = getDisplay2();
-			
-			if (str.length() > 1) {
-				str = str.substring(0, str.length()-1);
-				setDisplay2(str);
-			}else{
-				setDisplay2("0");
-			}
+			setDisplay("0");
 		}
-		
+			
 		displayMode = INPUT_MODE;
 		clearOnNextDigit = false;
 	}
